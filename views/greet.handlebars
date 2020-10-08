@@ -1,0 +1,46 @@
+<h1>Greetings</h1>
+
+<div>{{message}}</div>
+
+
+{{#if messages.info}}
+<div class="entry">
+    <h1> {{messages.info}}</h1>
+</div>
+{{/if}}
+
+<form action="/greet" method="post">
+<div>
+     <input type="textbox" placeholder="enter name" name="greet" >
+</div>
+
+<br>
+
+<div>
+    <input type="radio" name="language" value="xhosa" > Xhosa
+
+    <input type="radio" name="language" value="english"> English
+
+    <input type="radio" name="language" value="sotho"> Sotho
+
+</div>
+
+<br>
+
+<button class="button-primary" type="submit" name="button">GREET</button>
+
+
+
+</form>
+
+<br>
+
+ <div class="counter"> Counter
+    
+    {{counter}}
+</div>
+
+<br>
+
+<a href="/greeted">Names Greeted</a>
+
