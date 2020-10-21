@@ -5,7 +5,16 @@ const greetingsApp = require("./greetings")
 const flash = require('express-flash');
 const session = require('express-session');
 
-const greetapp = greetingsApp();
+const pg = require("pg");
+const Pool = pg.Pool;
+
+const connectionString = process.env.DATABASE_URL || 'postgresql://salizwa:salizwa123@localhost:5432/greetingsApp';
+
+const pool = new Pool({
+    connectionString
+  });
+
+const greetapp = greetingsApp(pool);
 
 const app = express();
 
@@ -26,7 +35,7 @@ app.use(session({
 //initialise the flash middleware
 app.use(flash());
 
-app.get("/", function (req, res) {
+app.get("/", async function (req, res) {
   res.render("greet")
 });
 
@@ -59,32 +68,30 @@ app.get("/", function (req, res) {
 
 // })
 
-app.post("/greet", function (req, res) {
+app.post("/greet", async function (req, res) {
 
-  
-  
-
-  var name = req.body.greet
+  var name = req.body.names
 
   var language = req.body.language
+
   res.render("greet", {
-    message: greetapp.greeter(name, language),
-    counter: greetapp.counter(),
+    message: await greetapp.greeter(name, language),
+    counter: await greetapp.counter(),
 
 
 
   })
 })
 
-app.get("/greeted", function (req, res) {
+app.get("/greeted", async function (req, res) {
   res.render("greeted", {
-    listOfUsers: greetapp.listOfUsers(),
+    listOfUsers: greetapp.getNames(),
 
 
   })
 });
 
-app.get("/counter/:messenger", function (req, res) {
+app.get("/counter/:messenger", async function (req, res) {
 
   var name = req.params.messenger;
   var count = greetapp.getCount(name)

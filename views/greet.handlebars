@@ -2,7 +2,6 @@
 
 <div>{{message}}</div>
 
-
 {{#if messages.info}}
 <div class="entry">
     <h1> {{messages.info}}</h1>
@@ -10,8 +9,9 @@
 {{/if}}
 
 <form action="/greet" method="post">
+
 <div>
-     <input type="textbox" placeholder="enter name" name="greet" >
+     <input type="textbox" placeholder="enter name" name="names" >
 </div>
 
 <br>

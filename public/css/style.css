@@ -1,16 +1,29 @@
 body {
-    background-color: rgb(0, 102, 153);
+    background-color: black;
   }
 
  h1 {
-     color : rgb(102, 153, 153)
+     color : gold
  }
 
  div {
 
-    color: rgb(102, 255, 102);
+    color: gold;
     width: 300px;
     margin: auto;
  }
+
+ .button-primary {
+    background-color: white; 
+    color: black; 
+    border: 12px gold;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  
+  .button-primary:hover {
+    background-color: gold;
+    color: black;
+  }
 
  
