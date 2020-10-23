@@ -11,8 +11,8 @@ const Pool = pg.Pool;
 const connectionString = process.env.DATABASE_URL || 'postgresql://salizwa:salizwa123@localhost:5432/greetingsApp';
 
 const pool = new Pool({
-    connectionString
-  });
+  connectionString
+});
 
 const greetapp = greetingsApp(pool);
 
@@ -47,18 +47,16 @@ app.get("/", async function (req, res) {
 
 //   const language = req.body.language
 
-//   if (firstNameEntered == "") {
-//     req.flash("info", "Please enter name")
+//   
 //     // res.render("greet")
 //     // return;
 //   }
 
-//   else if (language == undefined) {
-//     req.flash("info", "Please select language")
+//   else 
 //     // res.render("greet")
 //     // return;
 //   }
- 
+
 //   res.render("greet", {
 //     message: greetapp.greeter(firstNameEntered, language),
 //     counter: greetapp.counter(),
@@ -71,11 +69,22 @@ app.get("/", async function (req, res) {
 app.post("/greet", async function (req, res) {
 
   var name = req.body.names
-
   var language = req.body.language
 
+  if (language === undefined) {
+    req.flash("info", "Please select language")
+
+  }
+
+  if ( name === '') {
+    req.flash("info", "Please enter name")
+
+  } else {
+    var text = await greetapp.greeter(name, language);
+  }
+
   res.render("greet", {
-    message: await greetapp.greeter(name, language),
+    message: text,
     counter: await greetapp.counter(),
 
 
@@ -85,22 +94,33 @@ app.post("/greet", async function (req, res) {
 
 app.get("/greeted", async function (req, res) {
   res.render("greeted", {
-    listOfUsers: greetapp.getNames(),
+    listOfUsers: await greetapp.getNames(),
 
 
   })
 });
 
-app.get("/counter/:messenger", async function (req, res) {
+app.get("/counter/:names", async function (req, res) {
 
-  var name = req.params.messenger;
-  var count = greetapp.getCount(name)
+  var name = req.params.names;
+  var count = await greetapp.greetedUsersCount(name);
+
+  //console.log(count)
+
+  for (const key in count) {
+
+    var element = count[key];
+
+
+  }
+
+  console.log(element)
   // res.render("counter", {messenger, counter:
   //   greeted.addNames(firstNameEntered)
   // })
 
   res.render("message", {
-    message: `Hello, ${name} you have been greeted ${count} time(s)`
+    message: `Hello, ${name} you have been greeted ${element} time(s)`
   })
 
 });

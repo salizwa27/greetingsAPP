@@ -26,4 +26,32 @@ body {
     color: black;
   }
 
- 
+  .greetedBtn a {
+    background-color: white; 
+    color: black; 
+    border: 12px gold;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .greetedBtn a:hover {
+    background-color: gold;
+    color: black;
+  }
+
+  .resetBtn{
+    background-color: white; 
+    color: black; 
+    border: 12px gold;
+    border-radius: 4px;
+    
+  }
+
+  .resetBtn :hover {
+    background-color: gold;
+    color: black;
+  }
+
+  .entry{
+      color: crimson;
+  }

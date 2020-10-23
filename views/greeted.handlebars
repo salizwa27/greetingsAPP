@@ -4,7 +4,10 @@
    <ul>
        {{#each listOfUsers}}
 
-      <li><a href="/counter/{{@listOfUsers}}">{{@listOfUsers}}</a> </li>
+      <a href="/counter/{{this.name}}"> 
+      <li>{{this.name}}</li>
+      </a>
+      
 
       {{/each}}
    </ul>
