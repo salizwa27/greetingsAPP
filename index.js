@@ -36,7 +36,10 @@ app.use(session({
 app.use(flash());
 
 app.get("/", async function (req, res) {
-  res.render("greet")
+  res.render("greet", {
+    counter: await greetapp.counter(),
+    
+  })
 });
 
 // app.post("/greet", function (req, res) {
@@ -76,7 +79,7 @@ app.post("/greet", async function (req, res) {
 
   }
 
-  if ( name === '') {
+  else if (name === '') {
     req.flash("info", "Please enter name")
 
   } else {
@@ -86,6 +89,7 @@ app.post("/greet", async function (req, res) {
   res.render("greet", {
     message: text,
     counter: await greetapp.counter(),
+    
 
 
 
@@ -105,25 +109,23 @@ app.get("/counter/:names", async function (req, res) {
   var name = req.params.names;
   var count = await greetapp.greetedUsersCount(name);
 
-  //console.log(count)
-
   for (const key in count) {
 
     var element = count[key];
 
-
   }
-
-  console.log(element)
-  // res.render("counter", {messenger, counter:
-  //   greeted.addNames(firstNameEntered)
-  // })
 
   res.render("message", {
     message: `Hello, ${name} you have been greeted ${element} time(s)`
   })
 
 });
+
+app.get("/reset", async function (req, res) {
+  await greetapp.resetBtn();
+  res.redirect("/")
+
+})
 
 
 

@@ -1,6 +1,6 @@
 body {
-    background-color: black;
-  }
+    background-color: black
+}
 
  h1 {
      color : gold
@@ -18,7 +18,7 @@ body {
     color: black; 
     border: 12px gold;
     border-radius: 12px;
-    font-size: 12px;
+    padding: 3px;
   }
   
   .button-primary:hover {
@@ -30,8 +30,10 @@ body {
     background-color: white; 
     color: black; 
     border: 12px gold;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 12px;
+    padding: 2px;
+    text-decoration: none
+    
   }
 
   .greetedBtn a:hover {
@@ -43,8 +45,9 @@ body {
     background-color: white; 
     color: black; 
     border: 12px gold;
-    border-radius: 4px;
-    
+    border-radius: 12px;
+    padding: 2px;
+    text-decoration: none
   }
 
   .resetBtn :hover {
@@ -54,4 +57,47 @@ body {
 
   .entry{
       color: crimson;
+  }
+
+  .previousBtn a {
+    background-color: white; 
+    color: black; 
+    border: 12px gold;
+    border-radius: 12px;
+    font-size: 16px;
+    padding: 3px;
+    text-decoration: none
+  }
+
+  .previousBtn a:hover {
+    background-color: gold;
+    color: black;
+  }
+
+  a {
+    color: chartreuse;
+    text-decoration: none;
+  }
+
+
+  .homeBtn a {
+    background-color: white; 
+    color: black; 
+    border: 12px gold;
+    border-radius: 12px;
+    font-size: 16px;
+    padding: 3px;
+    text-decoration: none
+  }
+
+  .homeBtn a:hover {
+    background-color: gold;
+    color: black;
+  }
+
+  .container {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
   }

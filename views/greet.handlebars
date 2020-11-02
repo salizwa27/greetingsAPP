@@ -1,4 +1,4 @@
-<h1>Greetings</h1>
+<h1>Greetings Web App</h1>
 
 <div>{{message}}</div>
 
@@ -6,30 +6,30 @@
 
 <form action="/greet" method="post">
 
-{{#if messages.info}}
-<div class="entry">
-    <h4> {{messages.info}}</h4>
-</div>
-{{/if}}
+    {{#if messages.info}}
+    <div class="entry">
+        <h4> {{messages.info}}</h4>
+    </div>
+    {{/if}}
 
-<div class="textboxName">
-     <input type="textbox" placeholder="enter name" name="names" >
-</div>
+    <div class="textboxName">
+        <input type="textbox" placeholder="enter name" name="names">
+    </div>
 
-<br>
+    <br>
 
-<div>
-    <input type="radio" name="language" value="xhosa" > Xhosa
+    <div>
+        <input type="radio" name="language" value="xhosa"> Xhosa
 
-    <input type="radio" name="language" value="english"> English
+        <input type="radio" name="language" value="english"> English
 
-    <input type="radio" name="language" value="sotho"> Sotho
+        <input type="radio" name="language" value="sotho"> Sotho
 
-</div>
+    </div>
 
-<br>
+    <br>
 
-<button class="button-primary" type="submit" name="button">GREET</button>
+    <button class="button-primary" type="submit" name="button">GREET</button>
 
 
 
@@ -37,19 +37,23 @@
 
 <br>
 
- <div class="counter"> Counter
-    
+<div class="counter"> Counter
+
     {{counter}}
 </div>
 
 <br>
 
 <div class="greetedBtn">
-<a href="/greeted">Names Greeted</a>
+    <a href="/greeted">Names Greeted</a>
 </div>
 
-<br/>
+<br />
+
+<a href="/reset">
+    <button class="resetBtn" on type="submit" name="button" value="reset">Reset
+    </button>
+</a>
 
 
-    <button class="resetBtn" name="button" type="button">Reset</button>
-
+{{!-- // <button class="resetBtn" name="button" type="reset">Reset</button> --}}

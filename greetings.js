@@ -3,6 +3,8 @@ module.exports = function greetingsApp(pool) {
 
    async function greeter(firstNameEntered, language) {
 
+    //var name = name.toUpperCase().charAt(0) + name.slice(1);
+
        // addNames(firstNameEntered)
         var check = await checkName(firstNameEntered)
         if(check === 0){
@@ -11,16 +13,16 @@ module.exports = function greetingsApp(pool) {
         } await updateCounter(firstNameEntered)
 
 
-        if (language == "xhosa") {
+        if (language === "xhosa") {
             return "Molo, " + firstNameEntered;
 
         }
 
-        else if (language == "english") {
+        else if (language === "english") {
             return "Hello, " + firstNameEntered
         }
 
-        else if (language == "sotho") {
+        else if (language === "sotho") {
             return "Dumela, " + firstNameEntered
         }
     }
@@ -74,35 +76,22 @@ module.exports = function greetingsApp(pool) {
         return onePersonCounter.rows
     }
 
-    
-
     async function counter() {
         const count = await pool.query('select id from greet')
         return count.rowCount
     }
 
     async function greetedUsersCount(name) {
-        name = name.charAt(0).toUpperCase() + name.slice(1);
+       // name = name.charAt(0).toUpperCase() + name.slice(1);
         const namesGreeted = await pool.query('select counter from greet where name=$1', [name])
-        return namesGreeted.rows[0]
+        return namesGreeted.rows[0].counter
     }
 
     async function resetBtn() {
-        await pool.query("delete from greet")
+        await pool.query('delete from greet')
+        
     }
 
-
-   
-
-//     if (namesGreeted[firstNameEntered] == undefined) {
-
-//         namesGreeted[firstNameEntered] = 0;
-
-//     }
-//   namesGreeted[firstNameEntered] ++;
-
-
-// }
 
     return {
         greeter,

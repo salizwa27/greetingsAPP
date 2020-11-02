@@ -3,11 +3,14 @@
 
    <ul>
        {{#each listOfUsers}}
-
-      <a href="/counter/{{this.name}}"> 
-      <li>{{this.name}}</li>
-      </a>
-      
-
+<li>
+      <a href="/counter/{{this.name}}">{{this.name}}</a>
+      </li>
+     
+    
       {{/each}}
    </ul>
+
+   <div class="previousBtn">
+<a href="/">Previous</a>
+</div>
