@@ -84,7 +84,7 @@ module.exports = function greetingsApp(pool) {
     async function greetedUsersCount(name) {
        // name = name.charAt(0).toUpperCase() + name.slice(1);
         const namesGreeted = await pool.query('select counter from greet where name=$1', [name])
-        return namesGreeted.rows[0].counter
+        return namesGreeted.rows[0]
     }
 
     async function resetBtn() {
