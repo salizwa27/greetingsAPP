@@ -55,41 +55,41 @@ describe('The greetings function', function() {
 
 })
 
-describe('Insert names and Get names on database', function() {
-    beforeEach(async function() {
-        // clean the tables before each test run
-        await pool.query("delete from greet;");
+// describe('Insert names and Get names on database', function() {
+//     beforeEach(async function() {
+//         // clean the tables before each test run
+//         await pool.query("delete from greet;");
 
-    });
-    it('should insert name and update counter for Salizwa', async function() {
+//     });
+//     it('should insert name and update counter for Salizwa', async function() {
 
-        let greetings = greetingsApp(pool);
-        var name = await greetings.insertNames('Salizwa');
+//         let greetings = greetingsApp(pool);
+//         var name = await greetings.insertNames('Salizwa');
 
-        await greetings.checkName('Salizwa');
+//         await greetings.checkName('Salizwa');
 
 
-        //var count = await greetings.greetedUsersCount('Salizwa');
+//         //var count = await greetings.greetedUsersCount('Salizwa');
          
-//console.log(count);
+// //console.log(count);
 
-        // for (const key in count) {
+//         // for (const key in count) {
 
-        //     var element = count[key];
-        // }
+//         //     var element = count[key];
+//         // }
 
-        if (name) {
-            await greetings.updateCounter('Salizwa')
-            await greetings.updateCounter('Salizwa')
-            await greetings.updateCounter('Salizwa')
-        }
+//         if (name) {
+//             await greetings.updateCounter('Salizwa')
+//             await greetings.updateCounter('Salizwa')
+//             await greetings.updateCounter('Salizwa')
+//         }
 
-        assert.equal(4, await greetings.greetedUsersCount('Salizwa'))
-    })
+//         assert.equal(4, await greetings.greetedUsersCount('Salizwa'))
+//     })
 
 
-    after(function() {
-        pool.end();
-    })
-})
+//     after(function() {
+//         pool.end();
+//     })
+// })
    
