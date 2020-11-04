@@ -1,17 +1,19 @@
 module.exports = function greetingsApp(pool) {
-   // var namesGreeted = {};
+    // var namesGreeted = {};
 
-   async function greeter(firstNameEntered, language) {
+    async function greeter(firstNameEntered, language) {
 
-    //var name = name.toUpperCase().charAt(0) + name.slice(1);
+        firstNameEntered = firstNameEntered.charAt(0).toUpperCase() + firstNameEntered.slice(1);
+        // addNames(firstNameEntered)
 
-       // addNames(firstNameEntered)
         var check = await checkName(firstNameEntered)
-        if(check === 0){
-          await  insertNames(firstNameEntered)
 
-        } await updateCounter(firstNameEntered)
+        if (check === 0) {
 
+            await insertNames(firstNameEntered)
+        } else{
+        await updateCounter(firstNameEntered)
+}
 
         if (language === "xhosa") {
             return "Molo, " + firstNameEntered;
@@ -29,7 +31,7 @@ module.exports = function greetingsApp(pool) {
 
     // function addNames(firstNameEntered) {
 
-    
+
 
     //     if (namesGreeted[firstNameEntered] == undefined) {
 
@@ -52,7 +54,7 @@ module.exports = function greetingsApp(pool) {
     // function getCount(name) {
     //     return namesGreeted[name]
     // }
-    
+
     async function insertNames(name) {
         name = name.charAt(0).toUpperCase() + name.slice(1);
         const insertUser = await pool.query('INSERT INTO greet (name, counter) VALUES($1,$2)', [name, 1])
@@ -72,7 +74,7 @@ module.exports = function greetingsApp(pool) {
 
     async function updateCounter(name) {
         name = name.charAt(0).toUpperCase() + name.slice(1);
-        const onePersonCounter = await pool.query('update greet set counter = counter + 1 where name=$1', [name]); 
+        const onePersonCounter = await pool.query('update greet set counter = counter + 1 where name=$1', [name]);
         return onePersonCounter.rows
     }
 
@@ -82,14 +84,14 @@ module.exports = function greetingsApp(pool) {
     }
 
     async function greetedUsersCount(name) {
-       // name = name.charAt(0).toUpperCase() + name.slice(1);
+        name = name.charAt(0).toUpperCase() + name.slice(1);
         const namesGreeted = await pool.query('select counter from greet where name=$1', [name])
-        return namesGreeted.rows[0]
+        return namesGreeted.rows[0].counter
     }
 
     async function resetBtn() {
         await pool.query('delete from greet')
-        
+
     }
 
 
@@ -103,11 +105,11 @@ module.exports = function greetingsApp(pool) {
         greetedUsersCount,
         resetBtn,
 
-      //  addNames,
-       // counter,
-      //listOfUsers
-       // getCount
-     
+        //  addNames,
+        // counter,
+        //listOfUsers
+        // getCount
+
     }
 
 }

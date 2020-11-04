@@ -74,7 +74,12 @@ app.post("/greet", async function (req, res) {
   var name = req.body.names
   var language = req.body.language
 
-  if (language === undefined) {
+  if (!language && !name) {
+    req.flash("info", "Please select language and name")
+
+  }
+
+  else if (language === undefined) {
     req.flash("info", "Please select language")
 
   }
@@ -109,14 +114,9 @@ app.get("/counter/:names", async function (req, res) {
   var name = req.params.names;
   var count = await greetapp.greetedUsersCount(name);
 
-  for (const key in count) {
-
-    var element = count[key];
-
-  }
 
   res.render("message", {
-    message: `Hello, ${name} you have been greeted ${element} time(s)`
+    message: `Hello, ${name} you have been greeted ${count} time(s)`
   })
 
 });

@@ -13,7 +13,11 @@
     {{/if}}
 
     <div class="textboxName">
-        <input type="textbox" placeholder="enter name" name="names">
+        <input type="text" placeholder="enter name" name="names"
+         onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)";
+       
+        >
+        
     </div>
 
     <br>
