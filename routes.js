@@ -60,6 +60,13 @@ module.exports = function routes(pool) {
     }
 
     async function reset(req, res) {
+
+        var reseted = req.body.button
+
+        if (!reseted) {
+            req.flash("info", "counter has been reseted")
+        
+          }
         await greetapp.resetBtn();
         res.redirect("/")
       
