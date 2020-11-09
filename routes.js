@@ -1,11 +1,11 @@
-module.exports = function routes(pool) {
+module.exports = function routes(greetapp) {
 
     const greetings = require('./greetings');
-    const greetapp = greetings(pool);
+   // const greetapp = greetings(greetapp);
 
     async function homePage(req, res) {
         res.render("greet", {
-            counter: await greetapp.counter(),
+            counter: await greetapp.counter()
             
           })
         }
@@ -44,8 +44,7 @@ module.exports = function routes(pool) {
     async function namesGreeted(req, res) {
         res.render("greeted", {
             listOfUsers: await greetapp.getNames(),
-        
-        
+
           })
         }
 

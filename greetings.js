@@ -1,10 +1,8 @@
 module.exports = function greetingsApp(pool) {
-    // var namesGreeted = {};
 
     async function greeter(firstNameEntered, language) {
 
         firstNameEntered = firstNameEntered.charAt(0).toUpperCase() + firstNameEntered.slice(1);
-        // addNames(firstNameEntered)
 
         var check = await checkName(firstNameEntered)
 
@@ -28,32 +26,6 @@ module.exports = function greetingsApp(pool) {
             return "Dumela, " + firstNameEntered
         }
     }
-
-    // function addNames(firstNameEntered) {
-
-
-
-    //     if (namesGreeted[firstNameEntered] == undefined) {
-
-    //         namesGreeted[firstNameEntered] = 0;
-
-    //     }
-    //   namesGreeted[firstNameEntered] ++;
-
-
-    // }
-
-    // function counter() {
-    //  return Object.keys(namesGreeted).length
-    // }
-
-    // function listOfUsers(){
-    //     return namesGreeted
-    // }
-
-    // function getCount(name) {
-    //     return namesGreeted[name]
-    // }
 
     async function insertNames(name) {
         name = name.charAt(0).toUpperCase() + name.slice(1);
@@ -94,7 +66,6 @@ module.exports = function greetingsApp(pool) {
 
     }
 
-
     return {
         greeter,
         insertNames,
@@ -104,11 +75,6 @@ module.exports = function greetingsApp(pool) {
         counter,
         greetedUsersCount,
         resetBtn,
-
-        //  addNames,
-        // counter,
-        //listOfUsers
-        // getCount
 
     }
 

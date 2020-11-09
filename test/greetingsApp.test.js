@@ -26,23 +26,31 @@ describe('The greetings function', function() {
         assert.equal("Dumela, Salizwa", await greetings.greeter('Salizwa', "sotho"))
     });
 
-    it('should return an error message if user did not enter a name and language', async function() {
+    it("should be able to show the name after being inserted", async function (){
 
-        let greetings = greetingsApp(pool);
-        assert.equal(undefined, await greetings.greeter('', ""))
+        let greetings = greetingsApp(pool)
+        await greetings.insertNames("Salizwa")
+
+        const printName = await greetings.getNames()
+
+        assert.deepEqual([{name:"Salizwa"}],printName)
     })
 
-    it('should return an error message if user did not enter a Language', async function() {
+
+    it("should be able delete the names when counter is reseted", async function(){
 
         let greetings = greetingsApp(pool);
-        assert.equal(undefined, await greetings.greeter("Salizwa", ""))
-    }), 
 
-    it('should return an error message if user did not enter a Name', async function() {
+        await greetings.insertNames("Salizwa")
+        await greetings.insertNames("Salizwa")
 
-        let greetings = greetingsApp(pool);
-        assert.equal(undefined, await greetings.greeter("", "Hello, "))
+
+        await greetings.resetBtn()
+
+        assert.deepEqual([], await greetings.getNames())
     })
+
+
 
     it('should be able to count for each user that is greeted', async function() {
 
@@ -51,6 +59,16 @@ describe('The greetings function', function() {
         await greetings.insertNames('Saneze')
         await greetings.insertNames('Lisakazi')
         assert.equal(3, await greetings.counter())
+    })
+
+    it("should be able to show the name when after inserted", async function (){
+
+        let greetings = greetingsApp(pool);
+        await greetings.insertNames("Salizwa")
+
+        const printName = await greetings.getNames()
+
+        assert.deepEqual([{name:"Salizwa"}],printName)
     })
 
 })
@@ -70,13 +88,6 @@ describe('Insert names and Get names on database', function() {
 
 
        var count = await greetings.greetedUsersCount('Salizwa');
-         
-//console.log(count);
-
-        // for (const key in count) {
-
-        //     var element = count[key];
-        // }
 
         if (name) {
             await greetings.updateCounter('Salizwa')

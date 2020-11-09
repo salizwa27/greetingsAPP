@@ -31,12 +31,12 @@ app.use(session({
   secret: "<add a secret string here>",
   resave: false,
   saveUninitialized: true
-}));
+})); 
 
 //initialise the flash middleware
 app.use(flash());
 
-var Routes = routes(pool)
+var Routes = routes(greetapp)
 
 app.get("/", Routes.homePage);
 
