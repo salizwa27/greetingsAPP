@@ -63,7 +63,7 @@ module.exports = function routes(greetapp) {
         var reseted = req.body.button
 
         if (!reseted) {
-            req.flash("info", "counter has been reseted")
+            req.flash("success", "counter has been reseted")
         
           }
         await greetapp.resetBtn();

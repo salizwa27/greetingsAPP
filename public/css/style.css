@@ -60,6 +60,10 @@ body {
       color: crimson;
   }
 
+  .success{
+    color: green;
+  }
+
   .previousBtn a {
     background-color: white; 
     color: black; 

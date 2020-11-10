@@ -12,6 +12,12 @@
     </div>
     {{/if}}
 
+    {{#if messages.success}}
+    <div class="success">
+        <h4> {{messages.success}}</h4>
+    </div>
+    {{/if}}
+
     <div class="textboxName">
         <input type="text" placeholder="enter name" name="names"
          onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)";
